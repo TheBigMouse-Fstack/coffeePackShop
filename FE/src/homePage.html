@@ -34,22 +34,33 @@
     />
     <!-- tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- splide -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+      integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU="
+      crossorigin="anonymous"
+    />
     <!-- styles -->
     <link rel="stylesheet" href="./assets/styles/global.css" />
     <link rel="stylesheet" href="./assets/styles/homePage.css" />
   </head>
   <body>
+    <!-- code here -->
     <!-- notification -->
     <div class="w-full h-[5rem] bg-[var(--passion-fruit)]">
       <div
         class="container px-4 text-white flex justify-center items-center h-full text-[1.4rem]"
       >
-        Vui lòng đặt trước ít nhất 24h đối với các đơn hàng yêu cầu bánh đặc
-        biệt.
+        Vui lòng đặt trước ít nhất 24h trước giờ giao hàng trừ bánh có sẵn.
       </div>
     </div>
-    <!--  -->
-    <nav class="w-full h-[5rem] px-[4.15rem] bg-[var(--mint-green)] flex">
+
+    <!-- Shop info  -->
+    <nav
+      class="w-full h-[5rem] px-[4.15rem] bg-[var(--mint-green)] lg:flex hidden"
+    >
       <ul
         class="flex w-1/2 justify-start items-center h-full text-[1.4rem] gap-8"
       >
@@ -64,12 +75,29 @@
         <li><i class="fa-brands fa-tiktok"></i></li>
       </ul>
     </nav>
+    <!-- table , moblie nav -->
+    <div
+      class="bg-pink-500 absolute top-0 left-0 w-[32rem] h-[80rem] z-[60] lg:hidden hidden"
+    >
+      <div
+        class="w-[90%] flex justify-between items-center h-[5rem] mx-auto bg-green-600 pl-8"
+      >
+        <p class="text-[1.57rem] font-bold">
+          <i class="mr-2 fa-solid fa-user fa-xl"></i> Đăng nhập
+        </p>
+        <div
+          class="flex h-[3rem] w-[3rem] justify-center items-center bg-red-600"
+        >
+          <i class="fa-solid fa-xmark fa-xl"></i>
+        </div>
+      </div>
+    </div>
     <!-- header -->
     <header class="w-full px-[4.15rem] h-auto bg-white sticky top-0 z-50">
       <div class="w-full h-[12rem] flex">
         <!-- Action (Burger Icon) -->
         <div
-          class="w-[3%] h-full z-50 flex justify-center items-center burger_div bg-white"
+          class="lg:w-[3%] w-[5%] h-full z-50 lg:hidden flex items-center burger_div bg-white"
         >
           <label
             for="burger"
@@ -89,7 +117,7 @@
         </div>
 
         <!-- Logo -->
-        <div class="w-[15%] h-full bg-white z-50">
+        <div class="lg:w-[15%] w-[23%] h-full bg-white z-50">
           <div class="w-full h-[9.6rem] flex pl-[2.5rem] items-end">
             <img
               src="../src/assets/favicon/favicon-96x96.png"
@@ -102,7 +130,7 @@
 
         <!-- Search Bar -->
         <form
-          class="flex justify-center items-center px-5 transition-all duration-300 search-bar w-[68%] bg-white z-50"
+          class="flex justify-center items-center px-5 transition-all duration-300 search-bar lg:w-[68%] w-[70%] bg-white z-50"
         >
           <input
             placeholder="Tìm sản phẩm..."
@@ -112,7 +140,7 @@
           />
           <button
             type="submit"
-            class="bg-[var(--passion-fruit)] shadow-lg text-white px-[2rem] py-[1.5rem] rounded-r-xl hover:bg-[var(--light-yellow)] transition-all flex items-center justify-center"
+            class="bg-[var(--passion-fruit)] shadow-lg text-white px-[2rem] py-[1.5rem] rounded-r-xl hover:bg-[var(--light-yellow)] transition-all flex items-center justify-center active:scale-95 active:shadow-none active:bg-[var(--light-grey)]"
           >
             <svg
               class="w-12 h-12"
@@ -132,41 +160,285 @@
         </form>
 
         <!-- User / Cart -->
-        <div class="w-[17%] h-full bg-white z-50 flex">
-          <div class="w-[80%] h-full flex justify-center items-center">
-            <p class="text-[1.57rem] font-bold">
-              <i class="mr-2 fa-solid fa-user"></i> Đăng nhập
-            </p>
-          </div>
 
-          <div class="w-[20%] h-full flex justify-center items-center">
-            <i class="fa-solid fa-cart-shopping fa-xl"></i>
-          </div>
+        <div class="w-[15%] h-full lg:flex hidden justify-center items-center">
+          <p class="text-[1.57rem] font-bold">
+            <i class="mr-2 fa-solid fa-user"></i> Đăng nhập
+          </p>
+        </div>
+
+        <div class="lg:w-[2%] w-[5%]h-full flex justify-end items-center">
+          <i class="fa-solid fa-cart-shopping fa-xl"></i>
         </div>
       </div>
 
-      <!-- Navbar -->
-      <div class="w-full h-[6rem] flex transition-all duration-300 navbar">
-        <ul class="flex items-center gap-8 w-full h-full">
-          <li>Trang Chủ</li>
-          <li>Sản Phẩm Có Sẵn</li>
-          <li>Sản Phẩm Theo Dịp</li>
-          <li>Ưu Đãi Giáng Sinh</li>
-          <li>Giới Thiệu</li>
-          <li>Hợp Tác Kinh Doanh</li>
-          <li>Thiết Kế Bánh Theo Ý Bạn</li>
+      <!--Laptop Navbar -->
+      <div
+        class="w-full hidden h-[6rem] lg:flex transition-all duration-300 navbar"
+      >
+        <ul class="flex items-center gap-12 w-full h-full">
+          <li>
+            <a
+              href="#"
+              class="relative text-black text-2xl transition-all duration-500 ease-in-out after:content-[''] after:absolute after:left-1/2 after:bottom-[-20%] after:w-0 after:h-[2px] after:bg-[var(--passion-fruit)] after:transition-all after:duration-500 after:ease-in-out hover:after:w-full hover:after:translate-x-[-50%] hover:text-[var(--passion-fruit)]"
+              >Trang Chủ</a
+            >
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="relative text-black text-2xl transition-all duration-500 ease-in-out after:content-[''] after:absolute after:left-1/2 after:bottom-[-20%] after:w-0 after:h-[2px] after:bg-[var(--passion-fruit)] after:transition-all after:duration-500 after:ease-in-out group-hover:after:w-full group-hover:after:translate-x-[-50%] group-hover:text-[var(--passion-fruit)]"
+            >
+              Sản Phẩm Có Sẵn
+              <i
+                class="fa-solid fa-chevron-down ml-1 transition-transform duration-300 ease-in-out group-hover:rotate-180"
+              ></i>
+            </a>
+            <ul
+              class="absolute top-[115%] left-[-16%] w-[20rem] pt-4 max-h-0 overflow-hidden bg-white text-black shadow-lg flex flex-col transition-[max-height] duration-500 ease-in-out group-hover:max-h-[400px] cursor-pointer"
+            >
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[50ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Bánh nhiều vị set 15 cái</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[65ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Bánh nhiều vị set 20 cái</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[75ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Bánh nhiều vị set 30 cái</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[75ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Bánh Chờ Giao</a>
+              </li>
+            </ul>
+          </li>
+          <li class="relative group">
+            <a
+              href="#"
+              class="relative text-black text-2xl transition-all duration-500 ease-in-out after:content-[''] after:absolute after:left-1/2 after:bottom-[-20%] after:w-0 after:h-[2px] after:bg-[var(--passion-fruit)] after:transition-all after:duration-500 after:ease-in-out group-hover:after:w-full group-hover:after:translate-x-[-50%] group-hover:text-[var(--passion-fruit)]"
+            >
+              Sản Phẩm Theo Dịp
+              <i
+                class="fa-solid fa-chevron-down ml-1 transition-transform duration-300 ease-in-out group-hover:rotate-180"
+              ></i>
+            </a>
+            <ul
+              class="absolute top-[115%] left-[-16%] w-[20rem] pt-4 max-h-0 overflow-hidden bg-white text-black shadow-lg flex flex-col transition-[max-height] duration-500 ease-in-out group-hover:max-h-[400px] cursor-pointer"
+            >
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[50ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Lễ Tết</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[65ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Sinh Nhật</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[75ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Kỷ Niệm</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[100ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Cưới Hỏi</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[125ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Thiếu Nhi</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[150ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Lễ tình yêu</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[175ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Halloween</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="relative group">
+            <a
+              href="#"
+              class="relative text-black text-2xl transition-all duration-500 ease-in-out after:content-[''] after:absolute after:left-1/2 after:bottom-[-20%] after:w-0 after:h-[2px] after:bg-[var(--passion-fruit)] after:transition-all after:duration-500 after:ease-in-out group-hover:after:w-full group-hover:after:translate-x-[-50%] group-hover:text-[var(--passion-fruit)]"
+            >
+              Giới thiệu
+              <i
+                class="fa-solid fa-chevron-down ml-1 transition-transform duration-300 ease-in-out group-hover:rotate-180"
+              ></i>
+            </a>
+            <ul
+              class="absolute top-[115%] left-[-16%] w-[25rem] pt-4 max-h-0 overflow-hidden bg-white text-black shadow-lg flex flex-col transition-[max-height] duration-500 ease-in-out group-hover:max-h-[400px] cursor-pointer"
+            >
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[50ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Về Sản Phẩm</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[65ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Câu Chuyện</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[75ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Đánh giá và phản hồi</a>
+              </li>
+              <li
+                class="w-full opacity-0 transition-all duration-300 delay-[100ms] ease-in-out group-hover:opacity-100 h-[4rem] pl-[2.2rem] hover:pl-[4rem] flex items-center"
+              >
+                <a href="#">Câu Hỏi Thường Gặp</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="relative text-black text-2xl transition-all duration-500 ease-in-out after:content-[''] after:absolute after:left-1/2 after:bottom-[-20%] after:w-0 after:h-[2px] after:bg-[var(--passion-fruit)] after:transition-all after:duration-500 after:ease-in-out hover:after:w-full hover:after:translate-x-[-50%] hover:text-[var(--passion-fruit)]"
+              >Hợp Tác Kinh Doanh</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="relative text-black text-2xl transition-all duration-500 ease-in-out after:content-[''] after:absolute after:left-1/2 after:bottom-[-20%] after:w-0 after:h-[2px] after:bg-[var(--passion-fruit)] after:transition-all after:duration-500 after:ease-in-out hover:after:w-full hover:after:translate-x-[-50%] hover:text-[var(--passion-fruit)]"
+              >Thiết Kế Bánh Theo Ý Bạn</a
+            >
+          </li>
         </ul>
       </div>
     </header>
 
-    <!-- code here -->
-    <div class="bg-red-500 w-full h-[200rem]"></div>
-    <!-- -->
+    <!-- Banner slice -->
+    <section id="splice__banner" class="splide w-full h-[60rem]">
+      <div class="splide__track w-full h-full">
+        <ul class="splide__list w-full h-full">
+          <li class="splide__slide overflow-hidden">
+            <div class="w-full h-full relative">
+              <img
+                src="./assets/images/placeHolder1400x600.png"
+                alt=""
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full h-[20rem] absolute top-1/3 left-0 pl-[4.15rem] translate-[-50%, -50%] border-4 bg-purple-600 text-white flex flex-wrap items-center"
+            >
+              <p class="text-[3rem] font-bold w-full">
+                Giảm giá 20% mùa Giáng Sinh!
+              </p>
+              <p class="text-[2rem] w-full">Làm từ kem sửa và trái cây</p>
+              <button
+                class="bg-[var(--passion-fruit)] shadow-lg text-white font-bold px-[2rem] py-[1rem] rounded-xl hover:bg-[var(--light-yellow)] transition-all flex items-center justify-center"
+              >
+                Xem ngay
+              </button>
+            </div>
+          </li>
+          <li class="splide__slide overflow-hidden">
+            <div class="w-full h-full relative">
+              <img
+                src="./assets/images/placeHolder1400x600.png"
+                alt=""
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full h-[20rem] absolute top-1/3 left-0 pl-[4.15rem] translate-[-50%, -50%] border-4 bg-purple-600 text-white flex flex-wrap items-center"
+            >
+              <p class="text-[3rem] font-bold w-full">Giảm giá 20% mùa Xuân!</p>
+              <p class="text-[2rem] w-full">rất ngọt ngào</p>
+              <button
+                class="bg-[var(--passion-fruit)] shadow-lg text-white font-bold px-[2rem] py-[1rem] rounded-xl hover:bg-[var(--light-yellow)] transition-all flex items-center justify-center"
+              >
+                Khám phá ngay
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
 
+    <!-- Shipping and Services Information -->
+    <div
+      class="container h-auto mx-auto my-[2rem] flex flex-wrap justify-between items-center bg-white"
+    >
+      <div
+        class="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/4 min-h-[16rem] flex flex-col justify-center items-center space-y-4"
+      >
+        <i class="fa-solid fa-truck fa-3x text-[#FF8C00]"></i>
+        <p class="text-center px-8">Giao hàng tại TP.HCM và khu vực lân cận</p>
+      </div>
+      <div
+        class="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/4 min-h-[16rem] flex flex-col justify-center items-center space-y-4"
+      >
+        <i class="fa-solid fa-store fa-3x text-[#D2691E]"></i>
+        <p class="text-center px-8">
+          Nhận hàng trực tiếp tại
+          <a
+            href="#"
+            class="text-blue-500 underline cursor-pointer hover:text-blue-700 hover:no-underline transition duration-300"
+            >đây</a
+          >
+          với khung giờ 6h - 22h mỗi ngày
+        </p>
+      </div>
+      <div
+        class="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/4 min-h-[16rem] flex flex-col justify-center items-center space-y-4"
+      >
+        <i class="fa-solid fa-leaf fa-3x text-[#228B22]"></i>
+        <p class="text-center px-8">
+          100% tự nhiên, rõ nguồn gốc , xuất xứ , không chất bảo quản
+        </p>
+      </div>
+      <div
+        class="w-1/2 sm:w-1/2 md:w-1/2 lg:w-1/4 min-h-[16rem] flex flex-col justify-center items-center space-y-4"
+      >
+        <i class="fa-solid fa-phone fa-3x text-[#32CD32]"></i>
+        <p class="text-center px-8">
+          Tư vấn mẫu và hỗ trợ đặt hàng bằng cách điền
+          <a
+            href="#"
+            class="text-blue-500 underline cursor-pointer hover:text-blue-700 hover:no-underline transition duration-300"
+            >form</a
+          >
+          hoặc
+          <a
+            href="#"
+            class="text-blue-500 underline cursor-pointer hover:text-blue-700 hover:no-underline transition duration-300"
+            >gọi</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="container bg-red-500 h-[20rem] mx-auto"></div>
     <!-- footer -->
     <footer></footer>
 
     <!-- scripts -->
+    <!-- splidejs -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"
+      integrity="sha256-FZsW7H2V5X9TGinSjjwYJ419Xka27I8XPDmWryGlWtw="
+      crossorigin="anonymous"
+    ></script>
+    <!-- js -->
     <script src="./assets/js/homePage.js"></script>
   </body>
 </html>
