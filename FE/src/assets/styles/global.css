@@ -3,5 +3,21 @@ html {
 }
 body {
   font-size: 1.6rem;
-  font-family: Gordita, sans-serif;
+  font-family: "Inter", serif;
+}
+:root {
+  --passion-fruit: #ffa500; /* Màu chanh dây */
+  --light-grey: #d1d5db; /* Màu xám nhạt */
+  --mint-green: #a7e8a4; /* Màu xanh lá mint */
+  --pastel-pink: #f4a7b9; /* Màu hồng pastel */
+  --lavender: #d6a1d7; /* Màu tím nhạt */
+  --light-yellow: #ffec6e; /* Màu vàng nhạt */
+  --light-peach: #ffb7a6; /* Màu cam nhạt */
+  --success-green: #4caf50; /* Màu tích xanh (Success) */
+  --warning-red: #ff4d4d; /* Màu cảnh báo đỏ (Warning) */
+
+  /* Màu hover */
+  --passion-fruit__hover: #a7e8a4; /* Màu chanh dây khi hover (chuyển sang màu mint xanh) */
+  --success-green__hover: #388e3c; /* Màu tích xanh khi hover (chuyển sang xanh đậm) */
+  --warning-red__hover: #d32f2f; /* Màu cảnh báo đỏ khi hover (chuyển sang đỏ đậm) */
 }
